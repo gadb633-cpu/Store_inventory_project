@@ -1,25 +1,40 @@
 class Product:
-    def __init__(self,name,price,quntity):
+    def __init__(self,name,price,quantity=0):
         self.__name = name
         self.__price = price
-        self.__quntity = quntity
+        self.__quantity = quantity
+        self.__total_value =0
 
     @property
     def name(self):
         return self.__name
-
-    @name.setter
-    def _name(self, value):
-        self.__name = value
 
     @property
     def price(self):
         return self.__price
 
     @price.setter
-    def _price(self, value):
-        self.__price = value
+    def price(self, value):
+        if value <=0:
+            raise ValueError("price must be positive")
+        else:
+            self.__price = value
 
     @property
-    def quntity(self):
-        return self.__quntity
+    def quantity(self):
+        return self.__quantity
+    
+    def add_stock(self,amount):
+        self.__quantity += amount
+
+    def sell(self,amount):
+        if amount <self.__quantity:
+            raise ValueError(f"not enough {self.__name}")
+        else:
+            self.__quantity -= amount
+    @property
+    def total_value(self):
+        self.__total_value = self.price*self.quantity
+        return self.__total_value
+
+    
