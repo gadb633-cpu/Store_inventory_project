@@ -2,10 +2,10 @@ class Inventory:
     def __init__(self):
         self.__products =[]
     def add(self,product):
-        if self.find(product) ==None:
+        if self.find(product.name) ==None:
             self.__products.append(product)
         else:
-            raise ValueError(f"{product}already exists")  
+            raise ValueError(f"{product.name} already exists")  
     def find(self,name):
         for product in self.__products:
             if product.name == name:
