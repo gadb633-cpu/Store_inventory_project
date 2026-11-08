@@ -28,7 +28,7 @@ class Product:
         self.__quantity += amount
 
     def sell(self,amount):
-        if amount <self.__quantity:
+        if amount > self.__quantity:
             raise ValueError(f"not enough {self.__name}")
         else:
             self.__quantity -= amount
@@ -36,5 +36,5 @@ class Product:
     def total_value(self):
         self.__total_value = self.price*self.quantity
         return self.__total_value
-
-    
+    def __str__(self):
+        return f"name:{self.__name} \nprice:{self.__price} \nquantity:{self.__quantity}"
