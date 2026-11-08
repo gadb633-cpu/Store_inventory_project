@@ -28,7 +28,7 @@ class Product:
         self.__quantity += amount
 
     def sell(self,amount):
-        if amount <self.__quantity:
+        if amount > self.__quantity:
             raise ValueError(f"not enough {self.__name}")
         else:
             self.__quantity -= amount
